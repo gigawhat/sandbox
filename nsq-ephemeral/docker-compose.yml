@@ -1,0 +1,42 @@
+services:
+  nsqlookupd:
+    image: docker.io/nsqio/nsq
+    command: /nsqlookupd
+    ports:
+      - "4160:4160"
+      - "4161:4161"
+    healthcheck:
+      test: ["CMD", "wget", "http://localhost:4161/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  nsqadmin:
+    image: docker.io/nsqio/nsq
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    ports:
+      - "4171:4171"
+    depends_on:
+      - nsqlookupd
+    healthcheck:
+      test: ["CMD", "wget", "http://localhost:4171/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  nsqd:
+    image: docker.io/nsqio/nsq
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160 --data-path=/data
+    ports:
+      - "4150:4150" # TCP
+      - "4151:4151" # HTTP
+    depends_on:
+      - nsqlookupd
+    volumes:
+      - nsqd:/data
+    healthcheck:
+      test: ["CMD", "wget", "http://localhost:4151/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  nsqd:
