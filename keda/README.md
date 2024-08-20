@@ -21,4 +21,4 @@ kubectl apply -k . --server-side=true
 
 ## References
 
-- [NSQ Design](https://nsq.io/overview/design.html)
+- [Keda Architecture](https://keda.sh/docs/2.15/concepts/#architecture)
