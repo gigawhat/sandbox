@@ -5,3 +5,4 @@ This repo is a collection of "sandboxes" for testing various "cloud native" apps
 ## Sandboxes
 
 - [nsq-ephemeral](nsq-ephemeral/README.md)
+- [keda](keda/README.md)
