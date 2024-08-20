@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cron-scaling
+spec:
+  selector:
+    matchLabels:
+      app: cron-scaling
+  template:
+    metadata:
+      labels:
+        app: cron-scaling
+    spec:
+      containers:
+      - name: cron-scaling
+        image: stefanprodan/podinfo
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 9898

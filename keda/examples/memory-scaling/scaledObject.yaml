@@ -1,0 +1,14 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: mem-stress
+spec:
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  scaleTargetRef:
+    name: mem-stress
+  triggers:
+  - type: memory
+    metricType: Utilization
+    metadata:
+      value: "50"

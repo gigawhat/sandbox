@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mem-stress
+spec:
+  selector:
+    matchLabels:
+      app: mem-stress
+  template:
+    metadata:
+      labels:
+        app: mem-stress
+    spec:
+      containers:
+      - name: mem-stress
+        image: debian:latest
+        resources:
+          requests:
+            memory: "128Mi"
+          limits:
+            memory: "2Gi"
+        command: ["/bin/sh"]
+        args: ["-c", "apt-get update && apt-get install -y stress-ng && stress-ng --vm 2 --vm-bytes 1G -t 600s"]

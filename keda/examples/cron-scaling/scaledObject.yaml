@@ -1,0 +1,16 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-scaling
+spec:
+  minReplicaCount: 0 # Scale to zero when no cron job is running
+  cooldownPeriod: 30 # 30 seconds cooldown period
+  scaleTargetRef:
+    name: cron-scaling
+  triggers:
+  - type: cron
+    metadata:
+      timezone: UTC
+      start: 0,15,30,45 * * * * # At 0, 15, 30, 45 minutes past the hour
+      end: 10,25,40,55 * * * *  # Until 10, 25, 40, 55 minutes past the hour
+      desiredReplicas: "10"

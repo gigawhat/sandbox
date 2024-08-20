@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu-stress
+spec:
+  selector:
+    matchLabels:
+      app: cpu-stress
+  template:
+    metadata:
+      labels:
+        app: cpu-stress
+    spec:
+      containers:
+      - name: cpu-stress
+        image: debian:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: "128Mi"
+          limits:
+            cpu: "2000m"
+            memory: "128Mi"
+        command: ["/bin/sh"]
+        args: ["-c", "apt-get update && apt-get install -y stress-ng && stress-ng --cpu 1 --timeout 600s"]
