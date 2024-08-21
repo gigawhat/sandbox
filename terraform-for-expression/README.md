@@ -4,6 +4,7 @@ Use Terraform's [for](https://developer.hashicorp.com/terraform/language/express
 
 * [Create a map from a map of objects](./for-map.tf)
 * [Create a list from a map of objects](./for-list.tf)
+* [Create a map from a map of objects grouped by a key](./for-grouping.tf)
 
 ## Usage
 

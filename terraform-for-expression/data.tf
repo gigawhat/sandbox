@@ -37,6 +37,12 @@ locals {
         dns_zone = "foobar.com"
       }
 
+      forms-barfoo-com = {
+        hostname     = "forms.barfoo.com"
+        dns_zone     = "barfoo.com"
+        bypass_cache = "on"
+      }
+
       frontend-integrations-dashboard-foobar-com = {
         hostname = "frontend-integrations-dashboard.foobar.com"
         dns_zone = "foobar.com"

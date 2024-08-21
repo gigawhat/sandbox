@@ -4,6 +4,7 @@ locals {
   }
 }
 
+
 output "site_that_bypass_cache_map" {
   value = local.site_that_bypass_cache_map
 }
