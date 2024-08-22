@@ -17,6 +17,10 @@ services:
       - grafana:/var/lib/grafana
       - ./provisioning:/etc/grafana/provisioning
       - ./dashboards:/etc/dashboards
+    environment:
+    - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/dashboards/applications/apps-homepage.json
+    - GF_AUTH_ANONYMOUS_ENABLED=true
+    - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
 
   foo-prod:
     image: stefanprodan/podinfo

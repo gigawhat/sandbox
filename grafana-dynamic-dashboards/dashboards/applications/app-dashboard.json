@@ -18,7 +18,6 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 2,
     "links": [],
     "panels": [
         {
@@ -113,7 +112,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "Cool App Metrics Panel 1",
+            "title": "Cool App Metrics Panel for ${app} in ${cenv}",
             "type": "timeseries"
         }
     ],
@@ -122,20 +121,28 @@
     "templating": {
         "list": [
             {
-                "current": {},
+                "current": {
+                    "selected": false,
+                    "text": "stage",
+                    "value": "stage"
+                },
                 "hide": 2,
                 "name": "cenv",
                 "options": [],
-                "query": "",
+                "query": "stage",
                 "skipUrlSync": false,
                 "type": "textbox"
             },
             {
-                "current": {},
+                "current": {
+                    "selected": false,
+                    "text": "foo",
+                    "value": "foo"
+                },
                 "hide": 2,
                 "name": "app",
                 "options": [],
-                "query": "",
+                "query": "foo",
                 "skipUrlSync": false,
                 "type": "textbox"
             }
@@ -149,6 +156,6 @@
     "timezone": "browser",
     "title": "App Dashboard",
     "uid": "advjpmg8zhgcgb",
-    "version": 5,
+    "version": 1,
     "weekStart": ""
 }
