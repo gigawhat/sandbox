@@ -1,0 +1,28 @@
+global:
+  scrape_interval: 30s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+
+scrape_configs:
+  - job_name: "foo-prod"
+    static_configs:
+      - targets: ["foo-prod:9898"]
+        labels:
+          app: "foo"
+          cenv: "prod"
+  - job_name: "bar-prod"
+    static_configs:
+      - targets: ["bar-prod:9898"]
+        labels:
+          app: "bar"
+          cenv: "prod"
+  - job_name: "foo-stage"
+    static_configs:
+      - targets: ["foo-stage:9898"]
+        labels:
+          app: "foo"
+          cenv: "stage"
+  - job_name: "bar-stage"
+    static_configs:
+      - targets: ["bar-stage:9898"]
+        labels:
+          app: "bar"
+          cenv: "stage"
